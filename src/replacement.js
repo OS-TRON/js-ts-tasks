@@ -4,9 +4,29 @@
  *  two digits numbers with number 2
  *  three digits numbers with number 3
  *  the rest numbers with number 4
+ * Напишите функцию, которая для каждого числа (отрицательные/положительные числа, нули) в данном массиве заменяет:
+ * однозначные числа на число 1
+ * двузначные числа на число 2
+ * трехзначные числа на число 3
+ * все остальные числа на число 4
  * @param {Array<number>} arr
  * @returns {Array<number>}
  */
 module.exports.replacement = function replacement(arr) {
-  throw new Error('Not implemented'); // remove me and write a solution
+  let result = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    let num = Math.abs(arr[i]);
+
+    if (num < 10) {
+      result.push(1);
+    } else if (num < 100) {
+      result.push(2);
+    } else if (num < 1000) {
+      result.push(3);
+    } else {
+      result.push(4);
+    }
+  }
+  return result;
 };
