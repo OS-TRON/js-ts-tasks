@@ -5,15 +5,15 @@
  */
 
 module.exports.all = function all(promisesArray) {
-  const results = [];
+  const resultses = [];
   let count = 0;
   return new Promise((resolve, reject) => {
     promisesArray.forEach(async (promisesInArray, index) => {
       try {
-        results[index] = await promisesInArray;
+        resultses[index] = await promisesInArray;
         count += 1;
         if (count === promisesArray.length) {
-          resolve(results);
+          resolve(resultses);
         }
       } catch (error) {
         reject(error);
