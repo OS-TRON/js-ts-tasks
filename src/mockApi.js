@@ -6,10 +6,15 @@
  *@response {object}
  */
 module.exports.mockApi = function mockApi(response, delay) {
-  return function foo() {
-    return new Promise(resolve => {
+  return function (solution) {
+    return new Promise((resolve, reject) => {
       setTimeout(() => {
-        resolve(response);
+        if (solution === 'resolve') {
+          resolve(response);
+        }
+        if (solution === 'reject') {
+          reject(response);
+        }
       }, delay);
     });
   };
