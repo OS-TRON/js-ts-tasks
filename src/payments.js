@@ -23,10 +23,10 @@
  * @returns {function}
  */
 module.exports.payments = function payments(TestUtils) {
-  return function (icome, debts) {
-    let sumAllIncomeProperties = TestUtils.sumAllObjectProperties.bind(income);
-    let sumAllDebtsProperties = TestUtils.sumAllObjectProperties.bind(debts);
+  return function (income, debts) {
+    const todi = TestUtils.sumAllObjectProperties.bind(income);
+    const totd = TestUtils.sumAllObjectProperties.bind(debts);
 
-    return sumAllIncomeProperties() - sumAllDebtsProperties();
+    return todi - totd;
   };
 };
