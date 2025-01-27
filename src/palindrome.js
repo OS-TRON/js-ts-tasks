@@ -13,5 +13,12 @@
  * @returns {function}
  */
 module.exports.palindrome = function palindrome(TestUtils) {
-  fff;
+  return function (str) {
+    let formattedStr = {
+      str: str.replaceAll(/[^0-9A-Za-z]/g, '').toLowerCase(),
+    };
+    let isPalindrome = TestUtils.isPalindrome.bind(formattedStr);
+
+    return isPalindrome();
+  };
 };
