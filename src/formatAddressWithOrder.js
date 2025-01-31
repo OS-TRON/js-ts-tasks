@@ -9,15 +9,7 @@
  * @returns {function}
  */
 module.exports.formatAddressWithOrder = function formatAddressWithOrder(order) {
-  return function (obr) {
-    let address = '';
-
-    for (let i = 0; i < order.length; i++) {
-      address += obr[order[i]];
-      if (i === order.length - 1) {
-        address += ',';
-      }
-    }
-    return address;
+  return function (addressDataObject) {
+    return order.map(key => addressDataObject[key] || '').join(', ');
   };
 };
