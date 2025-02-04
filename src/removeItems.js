@@ -6,5 +6,5 @@
  * @returns {Object}
  */
 module.exports.removeItems = function removeItems(arr, value) {
-  return arr.filter(element => element !== value);
+  return arr.filter(element => JSON.stringify(element) !== JSON.stringify(value));
 };
