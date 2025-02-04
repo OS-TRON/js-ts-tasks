@@ -7,10 +7,10 @@
  */
 module.exports.compareTwoNumbers = function compareTwoNumbers(firstNumber, secondNumber) {
   if (firstNumber > secondNumber) {
-    return `${firstNumber} > ${secondNumber}`;
-  } else if (firstNumber < secondNumber) {
-    return `${firstNumber} < ${secondNumber}`;
-  } else {
-    return `${firstNumber} = ${secondNumber}`;
+    return '>';
   }
+  if (firstNumber < secondNumber) {
+    return '<';
+  }
+  return '=';
 };

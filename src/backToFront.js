@@ -6,8 +6,9 @@
  * @returns {string}
  */
 module.exports.backToFront = function backToFront(str, symbolsCount) {
-  const start = str.slice(0, symbolsCount);
-  const end = str.slice(-symbolsCount);
-
-  return end + str + start;
+  if (str.length < symbolsCount) {
+    return str;
+  }
+  const suffix = str.slice(-symbolsCount);
+  return suffix + str + suffix;
 };
