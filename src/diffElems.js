@@ -5,11 +5,6 @@
  * @returns {number}
  */
 module.exports.diffElems = function diffElems(arr) {
-  if (!Array.isArray(arr)) {
-    throw new Error('Input');
-  }
-
-  const uniElement = new set(arr);
-
-  return uniElement.size;
+  const uniqueElems = new Set(arr);
+  return uniqueElems.size;
 };

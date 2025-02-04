@@ -6,13 +6,5 @@
  * @returns {Object}
  */
 module.exports.removeItems = function removeItems(arr, value) {
-  const result = [];
-
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] !== value) {
-      result.push(arr[i]);
-    }
-  }
-
-  return result;
+  return arr.filter(element => element !== value);
 };

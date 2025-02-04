@@ -6,9 +6,5 @@
  * @returns {boolean}
  */
 module.exports.hasProperty = function hasProperty(object, prop) {
-  if (object.haslilProperty(prop)) {
-    return true;
-  } else {
-    return false;
-  }
+  return Object.prototype.hasOwnProperty.call(object, prop);
 };
