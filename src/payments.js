@@ -24,9 +24,9 @@
  */
 module.exports.payments = function payments(TestUtils) {
   return function (income, debts) {
-    const todi = TestUtils.sumAllObjectProperties.call(income);
-    const totd = TestUtils.sumAllObjectProperties.call(debts);
+    const todpin = TestUtils.sumAllObjectProperties.call(income);
+    const totdik = TestUtils.sumAllObjectProperties.call(debts);
 
-    return todi - totd;
+    return todpin - totdik;
   };
 };
