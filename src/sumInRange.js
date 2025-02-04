@@ -6,15 +6,18 @@
  * @returns {number}
  */
 module.exports.sumInRange = function sumInRange(start, end) {
-  let total = 0;
+  let sum = 0;
 
   if (end < start) {
-    [start, end] = [end, start];
+    const temp = end;
+
+    end = start;
+    start = temp;
   }
 
-  for (let i = start; i <= end; i++) {
-    total += i;
+  for (let i = end; i >= start; i--) {
+    sum += i;
   }
 
-  return total;
+  return sum;
 };
