@@ -4,22 +4,29 @@
  * @returns {number}
  */
 module.exports.getDaysToNewYear = function getDaysToNewYear(targetDate: Date | string): number {
-  const parseInputDate = (dateValue: Date | string): Date => {
-    if (typeof dateValue === 'string') {
-      const [dayStr, monthStr, yearStr] = dateValue.split('.');
-      const day = Number(dayStr);
-      const month = Number(monthStr) - 1;
-      const year = Number(yearStr);
-      return new Date(year, month, day);
+  function parseDate(date: string): Date {
+    const [day, month, year] = date.split('.').map(Number);
+    if (typeof day === undefined || month === undefined || year === undefined) {
+      throw new Error(`${date} is not a valid date`);
     }
-    return dateValue;
-  };
+    return new Date(year, month - 1, day);
+  }
 
-  const current = parseInputDate(inputDate);
-  const newYearDate = new Date(2024, 0, 1);
-  const millisecondsDiff = newYearDate.getTime() - current.getTime();
+  function isLeapYear(year: number): boolean {
+    return year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0);
+  }
 
-  const daysRemaining = Math.ceil(millisecondsDiff / (1000 * 60 * 60 * 24));
+  const date = typeof targetDate === 'string' ? parseDate(targetDate) : targetDate;
 
-  return daysRemaining;
+  let dateYear = date.getFullYear();
+
+  while (!isLeapYear(dateYear)) {
+    dateYear += 1;
+  }
+
+  const nextLeapYear = new Date(dateYear, 0, 1);
+
+  const diffInMs = nextLeapYear.getTime() - date.getTime();
+
+  return Math.floor(diffInMs / (1000 * 3600 * 24));
 };

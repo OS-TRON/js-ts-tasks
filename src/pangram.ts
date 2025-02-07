@@ -6,8 +6,18 @@
  * @returns {boolean}
  */
 module.exports.pangram = function (word: string | number): boolean {
-  const normalized = String(input).toLowerCase();
-  const requiredChars = typeof input === 'string' ? 'abcdefghijklmnopqrstuvwxyz' : '0123456789';
+  const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+  const digits = '0123456789';
 
-  return [...requiredChars].every(char => normalized.includes(char));
+  const inputStr = word.toString().toLowerCase();
+
+  if (typeof word === 'string') {
+    return alphabet.split('').every(char => inputStr.includes(char));
+  }
+
+  if (typeof word === 'number') {
+    return digits.split('').every(digit => inputStr.includes(digit));
+  }
+
+  return false;
 };
