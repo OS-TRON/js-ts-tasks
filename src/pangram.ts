@@ -6,5 +6,8 @@
  * @returns {boolean}
  */
 module.exports.pangram = function (word: string | number): boolean {
-  throw new Error('Not implemented'); // delete this line and write your code
+  const normalized = String(input).toLowerCase();
+  const requiredChars = typeof input === 'string' ? 'abcdefghijklmnopqrstuvwxyz' : '0123456789';
+
+  return [...requiredChars].every(char => normalized.includes(char));
 };

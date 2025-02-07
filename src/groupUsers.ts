@@ -11,5 +11,34 @@
  */
 module.exports.groupUsers = function (users: Array<unknown>): Record<'employees' | 'contractors', Array<unknown>> {
   // replace Array<unknown> with your own types
-  throw new Error('Not implemented'); // delete this line and write your code
+  type User = {
+    name: string;
+    login: string;
+    surname?: string;
+    type: 'EMPLOYEE' | 'CONTRACTOR';
+    address?: {
+      officeId: number;
+      placeId: number;
+    };
+    contractorCompanyName?: string;
+  };
+
+  type GroupedUsers = {
+    employees: User[];
+    contractors: User[];
+  };
+
+  export function segregateUsers(users: User[]): GroupedUsers {
+    return users.reduce<GroupedUsers>(
+      (accumulator, currentUser) => {
+        if (currentUser.type === 'EMPLOYEE') {
+          accumulator.employees.push(currentUser);
+        } else if (currentUser.type === 'CONTRACTOR') {
+          accumulator.contractors.push(currentUser);
+        }
+        return accumulator;
+      },
+      { employees: [], contractors: [] }
+    );
+  }
 };
